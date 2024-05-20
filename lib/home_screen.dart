@@ -58,8 +58,7 @@ class HomePage extends StatelessWidget {
               SizedBox(height: 20),
               SnacksAndDrinksSection(), // New Snacks & Drinks Section
               SizedBox(height: 20),
-              Fridge(),
-              Fridge(),
+
               // Additional content can be added here
             ],
           ),
@@ -112,6 +111,7 @@ class SnacksAndDrinksItem extends StatelessWidget {
     return Column(
       children: [
         Card(
+          //color: Colors.lightBlueAccent, // Change this to the desired color
           margin: EdgeInsets.all(8.0),
           child: Padding(
             padding: const EdgeInsets.all(8.0), // Add padding inside the card
@@ -133,67 +133,67 @@ class SnacksAndDrinksItem extends StatelessWidget {
     );
   }
 }
-class Fridge extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          'Snacks & Drinks',
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
-        ),
-        SizedBox(height: 10),
-        GridView.count(
-          shrinkWrap: true,
-          crossAxisCount: 4, // Set to 4 to display four images per row
-          childAspectRatio: 0.7, // Adjust this as needed for a better fit
-          physics: NeverScrollableScrollPhysics(), // Prevent grid from scrolling independently
-          children: [
-            SnacksAndDrinksItem(image: 'assets/cleaners.png', name: 'Item 1'),
-            SnacksAndDrinksItem(image: 'assets/cleaners.png', name: 'Item 2'),
-            SnacksAndDrinksItem(image: 'assets/cleaners.png', name: 'Item 3'),
-            SnacksAndDrinksItem(image: 'assets/cleaners.png', name: 'Item 4'),
-            SnacksAndDrinksItem(image: 'assets/cleaners.png', name: 'Item 5'),
-            SnacksAndDrinksItem(image: 'assets/cleaners.png', name: 'Item 6'),
-            SnacksAndDrinksItem(image: 'assets/cleaners.png', name: 'Item 7'),
-            SnacksAndDrinksItem(image: 'assets/cleaners.png', name: 'Item 8'),
-          ],
-        ),
-      ],
-    );
-  }
-}
-
-class FridgeItem extends StatelessWidget {
-  final String image;
-  final String name;
-
-  FridgeItem({required this.image, required this.name});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.all(8.0),
-      child: Column(
-        children: [
-          Image.asset(
-            image,
-            width: 70, // Decrease the width for better fit
-            height: 70, // Decrease the height for better fit
-            fit: BoxFit.cover,
-          ),
-          SizedBox(height: 5),
-          Text(
-            name,
-            textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 12), // Adjust text size as needed
-          ),
-        ],
-      ),
-    );
-  }
-}
+// class Fridge extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Column(
+//       crossAxisAlignment: CrossAxisAlignment.start,
+//       children: [
+//         Text(
+//           'Snacks & Drinks',
+//           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+//         ),
+//         SizedBox(height: 10),
+//         GridView.count(
+//           shrinkWrap: true,
+//           crossAxisCount: 4, // Set to 4 to display four images per row
+//           childAspectRatio: 0.7, // Adjust this as needed for a better fit
+//           physics: NeverScrollableScrollPhysics(), // Prevent grid from scrolling independently
+//           children: [
+//             SnacksAndDrinksItem(image: 'assets/cleaners.png', name: 'Item 1'),
+//             SnacksAndDrinksItem(image: 'assets/cleaners.png', name: 'Item 2'),
+//             SnacksAndDrinksItem(image: 'assets/cleaners.png', name: 'Item 3'),
+//             SnacksAndDrinksItem(image: 'assets/cleaners.png', name: 'Item 4'),
+//             SnacksAndDrinksItem(image: 'assets/cleaners.png', name: 'Item 5'),
+//             SnacksAndDrinksItem(image: 'assets/cleaners.png', name: 'Item 6'),
+//             SnacksAndDrinksItem(image: 'assets/cleaners.png', name: 'Item 7'),
+//             SnacksAndDrinksItem(image: 'assets/cleaners.png', name: 'Item 8'),
+//           ],
+//         ),
+//       ],
+//     );
+//   }
+// }
+//
+// class FridgeItem extends StatelessWidget {
+//   final String image;
+//   final String name;
+//
+//   FridgeItem({required this.image, required this.name});
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(
+//       margin: EdgeInsets.all(8.0),
+//       child: Column(
+//         children: [
+//           Image.asset(
+//             image,
+//             width: 70, // Decrease the width for better fit
+//             height: 70, // Decrease the height for better fit
+//             fit: BoxFit.cover,
+//           ),
+//           SizedBox(height: 5),
+//           Text(
+//             name,
+//             textAlign: TextAlign.center,
+//             style: TextStyle(fontSize: 12), // Adjust text size as needed
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }
 class LocationButton extends StatefulWidget {
   @override
   _LocationButtonState createState() => _LocationButtonState();
