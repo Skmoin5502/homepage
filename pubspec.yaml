@@ -41,3 +41,11 @@ flutter:
   uses-material-design: true
   assets:
   - assets/profile_photo.webp
+  - assets/cleaners.png
+  - assets/electronics.png
+  - assets/iron.png
+  - assets/mobiles.png
+  - assets/smartwatch.png
+  - assets/speakers.png
+  - assets/trimmer.png
+  - assets/earpods.png

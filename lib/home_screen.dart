@@ -58,6 +58,8 @@ class HomePage extends StatelessWidget {
               SizedBox(height: 20),
               SnacksAndDrinksSection(), // New Snacks & Drinks Section
               SizedBox(height: 20),
+              Fridge(),
+              Fridge(),
               // Additional content can be added here
             ],
           ),
@@ -77,29 +79,22 @@ class SnacksAndDrinksSection extends StatelessWidget {
           'Snacks & Drinks',
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
         ),
-        SizedBox(height: 15),
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: [
-              SnacksAndDrinksItem(image: 'path/to/image1.jpg', name: 'Item 1'),
-              SnacksAndDrinksItem(image: 'path/to/image2.jpg', name: 'Item 2'),
-              SnacksAndDrinksItem(image: 'path/to/image3.jpg', name: 'Item 3'),
-              SnacksAndDrinksItem(image: 'path/to/image4.jpg', name: 'Item 4'),
-            ],
-          ),
-        ),
-        SizedBox(height: 15),
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: [
-              SnacksAndDrinksItem(image: 'path/to/image5.jpg', name: 'Item 5'),
-              SnacksAndDrinksItem(image: 'path/to/image6.jpg', name: 'Item 6'),
-              SnacksAndDrinksItem(image: 'path/to/image7.jpg', name: 'Item 7'),
-              SnacksAndDrinksItem(image: 'path/to/image8.jpg', name: 'Item 8'),
-            ],
-          ),
+        SizedBox(height: 10),
+        GridView.count(
+          shrinkWrap: true,
+          crossAxisCount: 4, // Set to 4 to display four images per row
+          childAspectRatio: 0.7, // Adjust this as needed for a better fit
+          physics: NeverScrollableScrollPhysics(), // Prevent grid from scrolling independently
+          children: [
+            SnacksAndDrinksItem(image: 'assets/cleaners.png', name: 'Item 1'),
+            SnacksAndDrinksItem(image: 'assets/cleaners.png', name: 'Item 2'),
+            SnacksAndDrinksItem(image: 'assets/cleaners.png', name: 'Item 3'),
+            SnacksAndDrinksItem(image: 'assets/cleaners.png', name: 'Item 4'),
+            SnacksAndDrinksItem(image: 'assets/cleaners.png', name: 'Item 5'),
+            SnacksAndDrinksItem(image: 'assets/cleaners.png', name: 'Item 6'),
+            SnacksAndDrinksItem(image: 'assets/cleaners.png', name: 'Item 7'),
+            SnacksAndDrinksItem(image: 'assets/cleaners.png', name: 'Item 8'),
+          ],
         ),
       ],
     );
@@ -114,28 +109,91 @@ class SnacksAndDrinksItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Card(
+          margin: EdgeInsets.all(8.0),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0), // Add padding inside the card
+            child: Image.asset(
+              image,
+              width: 70, // Decrease the width for better fit
+              height: 70, // Decrease the height for better fit
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+        SizedBox(height: 5),
+        Text(
+          name,
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 12), // Adjust text size as needed
+        ),
+      ],
+    );
+  }
+}
+class Fridge extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Snacks & Drinks',
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+        ),
+        SizedBox(height: 10),
+        GridView.count(
+          shrinkWrap: true,
+          crossAxisCount: 4, // Set to 4 to display four images per row
+          childAspectRatio: 0.7, // Adjust this as needed for a better fit
+          physics: NeverScrollableScrollPhysics(), // Prevent grid from scrolling independently
+          children: [
+            SnacksAndDrinksItem(image: 'assets/cleaners.png', name: 'Item 1'),
+            SnacksAndDrinksItem(image: 'assets/cleaners.png', name: 'Item 2'),
+            SnacksAndDrinksItem(image: 'assets/cleaners.png', name: 'Item 3'),
+            SnacksAndDrinksItem(image: 'assets/cleaners.png', name: 'Item 4'),
+            SnacksAndDrinksItem(image: 'assets/cleaners.png', name: 'Item 5'),
+            SnacksAndDrinksItem(image: 'assets/cleaners.png', name: 'Item 6'),
+            SnacksAndDrinksItem(image: 'assets/cleaners.png', name: 'Item 7'),
+            SnacksAndDrinksItem(image: 'assets/cleaners.png', name: 'Item 8'),
+          ],
+        ),
+      ],
+    );
+  }
+}
+
+class FridgeItem extends StatelessWidget {
+  final String image;
+  final String name;
+
+  FridgeItem({required this.image, required this.name});
+
+  @override
+  Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.all(8.0),
-      width: 100,
       child: Column(
         children: [
           Image.asset(
             image,
-            width: 100,
-            height: 100,
+            width: 70, // Decrease the width for better fit
+            height: 70, // Decrease the height for better fit
             fit: BoxFit.cover,
           ),
           SizedBox(height: 5),
           Text(
             name,
             textAlign: TextAlign.center,
+            style: TextStyle(fontSize: 12), // Adjust text size as needed
           ),
         ],
       ),
     );
   }
 }
-
 class LocationButton extends StatefulWidget {
   @override
   _LocationButtonState createState() => _LocationButtonState();
@@ -327,69 +385,10 @@ class NotInLocationPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Location Check'),
+        title: Text('Not In Location'),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Icon(
-              Icons.location_off,
-              size: 100,
-              color: Colors.red,
-            ),
-            SizedBox(height: 20),
-            Text(
-              'Sorry, We Are Currently Not in This Location',
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 20),
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => DemoPage()),
-                );
-              },
-              child: Text('Try Changing Location'),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class DemoPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Demo Page'),
-      ),
-      body: Center(
-        child: Text(
-          'This is the demo page',
-          style: TextStyle(fontSize: 24),
-        ),
-      ),
-    );
-  }
-}
-
-// class ProfileImage is removed as it's replaced with CircularProfileImageWidget
-
-class SearchBarWidget extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return TextField(
-      decoration: InputDecoration(
-        hintText: 'Search...',
-        prefixIcon: Icon(Icons.search),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(25.0)),
-        ),
+        child: Text('You are not in Mumbra!'),
       ),
     );
   }
