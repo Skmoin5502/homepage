@@ -48,21 +48,34 @@ class HomePage extends StatelessWidget {
           ],
         ),
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              SearchBarWidget(),
-              SizedBox(height: 20),
-              SnacksAndDrinksSection(), // New Snacks & Drinks Section
-              SizedBox(height: 20),
-
-              // Additional content can be added here
-            ],
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: SearchBarWidget(),
           ),
-        ),
+          Expanded(
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    SnacksAndDrinksSection(), // New Snacks & Drinks Section
+                    SizedBox(height: 20),
+                    SnacksAndDrinksSection(),
+                    SizedBox(height: 20),
+                    SnacksAndDrinksSection(),
+                    SizedBox(height: 20),
+                    SnacksAndDrinksSection(),
+
+                    // Additional content can be added here
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
