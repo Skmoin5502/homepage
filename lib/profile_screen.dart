@@ -107,7 +107,7 @@ class ProfilePage extends StatelessWidget {
               child: Column(
                 children: [
                   Text(
-                    'DeliveryApp',
+                    'Speedy',
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
